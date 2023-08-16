@@ -1,7 +1,9 @@
 package com.devbook.stepDefinitions;
 
+import com.devbook.pages.DashboardPage;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 
 public class NavigationMenu_StepDefs {
     /**
@@ -26,6 +28,7 @@ public class NavigationMenu_StepDefs {
      -Just implement the step definitions by adding print statement.
      -Create new class NavigationMenuStepDefs
      */
+    DashboardPage dashboardPage = new DashboardPage();
 
     @Then("The user should be able to see welcome message")
     public void the_user_should_be_able_to_see_welcome_message() {
@@ -54,5 +57,16 @@ public class NavigationMenu_StepDefs {
     @Then("The user should be able to see Dashboard text")
     public void the_user_should_be_able_to_see_dashboard_text() {
         System.out.println("I verify that the Dashboard text is here");
+    }
+    @Then("The user navigates to {string} menu")
+    public void the_user_navigates_to_menu(String menuName) {
+        dashboardPage.navigateToMenu(menuName);
+    }
+    @Then("The user should be able to see header as {string}")
+    public void the_user_should_be_able_to_see_header_as(String headerText) {
+        String actualHeaderText= dashboardPage.getTextHeader(headerText);
+        System.out.println("actualHeaderText = " + actualHeaderText);
+        Assert.assertEquals("Verify that header text is displayed",headerText,actualHeaderText);
+
     }
 }
