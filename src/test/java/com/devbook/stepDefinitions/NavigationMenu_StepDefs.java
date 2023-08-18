@@ -1,6 +1,7 @@
 package com.devbook.stepDefinitions;
 
 import com.devbook.pages.DashboardPage;
+import com.devbook.utilities.BrowserUtils;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
